@@ -2,117 +2,136 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, PhoneCall, Calendar, HeartPulse } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
-const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Doctors", href: "/doctors" },
-  { name: "Departments", href: "/departments" },
-  { name: "Services", href: "/services" },
-  { name: "Contact", href: "/contact" },
-];
+import { Menu, X } from "lucide-react";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
-
-  const isInnerPage = pathname !== "/";
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const showGlass = isScrolled || isInnerPage;
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Packages", href: "/packages" },
+    { name: "Contact", href: "/contact" },
+  ];
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        showGlass ? "py-4 glass border-b border-stone-200/50" : "py-6 bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? "bg-white/80 backdrop-blur-md shadow-soft py-4"
+          : "bg-transparent py-6"
       }`}
     >
-      <div className="grid-container flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="bg-primary text-white p-2 rounded-xl group-hover:scale-105 transition-transform">
-              <HeartPulse size={28} strokeWidth={2.5} />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold leading-none text-slate-900">Aastha</span>
-              <span className="text-sm font-semibold leading-none text-primary">Hospital</span>
-            </div>
+      <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[90rem]">
+        <div className="flex items-center justify-between">
+          <Link href="/" className="relative z-50">
+            <h1
+              className={`font-heading text-2xl md:text-3xl font-bold tracking-wider transition-colors duration-300 ${
+                isScrolled ? "text-primary" : "text-white"
+              }`}
+            >
+              RAANJHANA
+            </h1>
+            <p
+              className={`text-[0.65rem] tracking-[0.3em] uppercase -mt-1 transition-colors duration-300 ${
+                isScrolled ? "text-stone-500" : "text-white/80"
+              }`}
+            >
+              Events
+            </p>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-slate-700 hover:text-primary transition-colors relative group"
+                className={`text-sm font-medium tracking-wide uppercase transition-colors hover:text-secondary ${
+                  isScrolled ? "text-foreground" : "text-white"
+                }`}
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full rounded-full"></span>
               </Link>
             ))}
+            <Link
+              href="/contact"
+              className={`px-6 py-2.5 border transition-all duration-300 hover:scale-105 active:scale-95 text-sm font-medium uppercase tracking-wider ${
+                isScrolled
+                  ? "bg-primary text-white border-primary hover:bg-primary/90"
+                  : "bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-sm"
+              }`}
+            >
+              Plan Event
+            </Link>
           </nav>
 
-          {/* Actions */}
-          <div className="hidden lg:flex items-center gap-4">
-            <a href="tel:+1234567890" className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-primary transition-colors">
-              <div className="bg-slate-100 p-2 rounded-full">
-                <PhoneCall size={16} className="text-primary" />
-              </div>
-              <span>Emergency: 1066</span>
-            </a>
-            <Button className="rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">
-              <Calendar className="mr-2 h-4 w-4" /> Book Appointment
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle */}
           <button
-            className="lg:hidden p-2 text-slate-700"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className={`lg:hidden relative z-50 p-2 -mr-2 transition-colors ${
+              isScrolled || isMobileMenuOpen ? "text-primary" : "text-white"
+            }`}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
+      </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Navigation */}
       <AnimatePresence>
-        {mobileMenuOpen && (
+        {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: "-100%" }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-white border-t border-slate-100 shadow-xl p-4 flex flex-col gap-4 lg:hidden"
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-40 bg-white flex flex-col justify-center items-center h-screen"
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-base font-medium text-slate-700 p-2 hover:bg-slate-50 hover:text-primary rounded-lg transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+            <nav className="flex flex-col items-center space-y-8">
+              {navLinks.map((link, i) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 + 0.2 }}
+                >
+                  <Link
+                    href={link.href}
+                    className="font-heading text-3xl font-medium text-foreground hover:text-primary transition-colors"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.1 + 0.2 }}
+                className="pt-8"
               >
-                {link.name}
-              </Link>
-            ))}
-            <div className="h-px bg-slate-100 my-2"></div>
-            <Button className="w-full justify-center rounded-xl" size="lg">
-              <Calendar className="mr-2 h-5 w-5" /> Book Appointment
-            </Button>
-            <Button variant="outline" className="w-full justify-center rounded-xl" size="lg">
-              <PhoneCall className="mr-2 h-5 w-5" /> Call Emergency
-            </Button>
+                <Link
+                  href="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="px-8 py-3 bg-primary text-white text-sm font-medium uppercase tracking-wider hover:bg-primary/90 transition-colors"
+                >
+                  Plan Your Event
+                </Link>
+              </motion.div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

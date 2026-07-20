@@ -2,113 +2,120 @@
 
 import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
-import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const testimonials = [
   {
-    name: "Robert Fox",
-    role: "Patient",
-    content: "The level of care I received at Aastha Hospital was exceptional. The doctors took the time to explain every step of my procedure, and the nursing staff was incredibly attentive and compassionate.",
+    id: 1,
+    name: "Aarti & Rahul",
+    role: "Wedding Clients",
+    text: "Raanjhana Events made our dream wedding a reality. Their attention to detail and ability to handle everything flawlessly left us speechless. It truly felt like magic.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop",
   },
   {
-    name: "Eleanor Pena",
-    role: "Patient",
-    content: "From the moment I walked in, I felt reassured. The facility is spotless, modern, and the efficiency of the administrative staff made my admission process completely stress-free.",
+    id: 2,
+    name: "Sarah Jenkins",
+    role: "Corporate Director, TechNova",
+    text: "The most professional and creative event management team we have ever worked with. Our annual gala was an absolute hit, thanks to their innovative design.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop",
   },
   {
-    name: "Guy Hawkins",
-    role: "Patient Family",
-    content: "My father underwent major heart surgery here. The cardiology team led by Dr. Johnson is simply world-class. We are forever grateful to Aastha Hospital for giving him a new lease on life.",
+    id: 3,
+    name: "Vikram Singh",
+    role: "Destination Wedding",
+    text: "Planning a wedding in Udaipur seemed daunting, but the Raanjhana team made it a breeze. Every guest was treated like royalty. Highly recommended!",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
   },
+  {
+    id: 4,
+    name: "Neha Sharma",
+    role: "Birthday Celebration",
+    text: "They transformed my 30th birthday into an elegant, sophisticated soirée. The decor was breathtaking and the execution was absolutely perfect.",
+    rating: 5,
+  }
 ];
 
 export function Testimonials() {
   return (
-    <section className="py-24 bg-stone-50">
-      <div className="grid-container">
-        <div className="grid grid-cols-12 gap-12 lg:gap-8 items-center">
-          
-          <div className="col-span-12 lg:col-span-4">
-            <div className="inline-block px-3 py-1 rounded-full bg-blue-50 text-primary text-sm font-bold tracking-wide mb-4">
-              TESTIMONIALS
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-6">
-              What Our Patients Say
+    <section className="py-24 bg-stone-50 overflow-hidden relative">
+      {/* Decorative Elements */}
+      <div className="absolute top-20 left-10 text-stone-200/50">
+        <Quote size={200} />
+      </div>
+      
+      <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[90rem] relative z-10">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-primary font-medium tracking-[0.2em] uppercase text-sm mb-4 block">
+              Client Stories
+            </span>
+            <h2 className="font-heading text-4xl md:text-5xl text-stone-900 font-bold mb-6">
+              Words of Love
             </h2>
-            <p className="text-stone-600 mb-8">
-              We take pride in providing exceptional healthcare experiences. Read the stories of recovery and hope from the people who matter most—our patients.
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="flex -space-x-4">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-12 h-12 rounded-full border-2 border-white overflow-hidden bg-slate-200">
-                    <Image
-                      src={`https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop&sig=${i}`}
-                      alt="Patient"
-                      width={48}
-                      height={48}
-                      className="object-cover w-full h-full"
-                    />
-                  </div>
-                ))}
-              </div>
-              <div>
-                <div className="flex text-yellow-400 mb-1">
-                  {[1, 2, 3, 4, 5].map((i) => <Star key={i} size={16} className="fill-current" />)}
-                </div>
-                <p className="text-sm font-bold text-slate-900">4.9/5 from 10k+ reviews</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-span-12 lg:col-span-8 relative">
-            <div className="absolute top-0 -left-6 text-stone-100 -z-10 rotate-180">
-              <Quote size={120} />
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              {testimonials.slice(0, 2).map((testimonial, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.2, duration: 0.6 }}
-                  className="bg-white border border-slate-100 rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-xl transition-shadow"
-                >
-                  <div className="flex text-yellow-400 mb-6">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} size={16} className="fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-slate-600 mb-8 italic">"{testimonial.content}"</p>
-                  <div className="flex items-center gap-4 mt-auto">
-                    <div className="w-12 h-12 rounded-full overflow-hidden bg-slate-200">
-                      <Image
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        width={48}
-                        height={48}
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-slate-900">{testimonial.name}</h4>
-                      <p className="text-sm text-slate-500">{testimonial.role}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
+            <div className="w-20 h-1 bg-secondary mx-auto" />
+          </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <Carousel
+            opts={{
+              align: "center",
+              loop: true,
+            }}
+            className="w-full max-w-5xl mx-auto"
+          >
+            <CarouselContent>
+              {testimonials.map((testimonial) => (
+                <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/2 pl-4 md:pl-6">
+                  <div className="bg-white p-10 rounded-2xl shadow-soft border border-stone-100 h-full flex flex-col relative">
+                    <div className="flex gap-1 mb-6">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} size={18} className="fill-secondary text-secondary" />
+                      ))}
+                    </div>
+                    
+                    <p className="text-stone-600 text-lg leading-relaxed mb-8 flex-grow italic">
+                      "{testimonial.text}"
+                    </p>
+                    
+                    <div className="mt-auto">
+                      <h4 className="font-heading font-bold text-xl text-stone-900 mb-1">
+                        {testimonial.name}
+                      </h4>
+                      <span className="text-sm text-stone-500 uppercase tracking-wider">
+                        {testimonial.role}
+                      </span>
+                    </div>
+                    
+                    <div className="absolute top-8 right-8 text-stone-100">
+                      <Quote size={40} />
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="flex justify-center gap-4 mt-12">
+              <CarouselPrevious className="position-relative static translate-x-0 translate-y-0 h-12 w-12 bg-white border-stone-200 text-stone-600 hover:bg-primary hover:border-primary hover:text-white" />
+              <CarouselNext className="position-relative static translate-x-0 translate-y-0 h-12 w-12 bg-white border-stone-200 text-stone-600 hover:bg-primary hover:border-primary hover:text-white" />
+            </div>
+          </Carousel>
+        </motion.div>
       </div>
     </section>
   );

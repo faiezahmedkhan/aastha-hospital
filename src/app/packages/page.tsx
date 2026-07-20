@@ -1,27 +1,27 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingActions } from "@/components/layout/FloatingActions";
-import { ServicesCarousel } from "@/components/sections/ServicesCarousel";
+import { PricingPackages } from "@/components/sections/PricingPackages";
 
 export const metadata = {
-  title: "Our Services | Raanjhana Events",
-  description: "Explore our premium event management services including wedding planning, corporate events, destination weddings, and bespoke decor.",
+  title: "Packages & Pricing | Raanjhana Events",
+  description: "Discover our exclusive event planning packages tailored to bring your vision to life.",
 };
 
-export default function ServicesPage() {
+export default function PackagesPage() {
   return (
     <>
       <Navbar />
       <main className="pt-24 bg-stone-50 min-h-screen">
         <div className="bg-stone-900 text-white py-24 text-center">
           <div className="container mx-auto px-6 max-w-4xl">
-            <h1 className="font-heading text-5xl md:text-6xl font-bold mb-6">Our Services</h1>
+            <h1 className="font-heading text-5xl md:text-6xl font-bold mb-6">Packages</h1>
             <p className="text-lg text-stone-300">
-              Comprehensive event solutions tailored for luxury and perfection.
+              Transparent, tailored, and luxurious packages for your special occasions.
             </p>
           </div>
         </div>
-        <ServicesCarousel />
+        <PricingPackages />
       </main>
       <Footer />
       <FloatingActions />
