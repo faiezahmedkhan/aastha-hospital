@@ -2,12 +2,16 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+  const isSolid = isScrolled || !isHomePage;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,8 +33,8 @@ export function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-white/80 backdrop-blur-md shadow-soft py-4"
+        isSolid
+          ? "bg-white/90 backdrop-blur-md shadow-sm py-4 border-b border-stone-200"
           : "bg-transparent py-6"
       }`}
     >
@@ -39,14 +43,14 @@ export function Navbar() {
           <Link href="/" className="relative z-50">
             <h1
               className={`font-heading text-2xl md:text-3xl font-bold tracking-wider transition-colors duration-300 ${
-                isScrolled ? "text-primary" : "text-white"
+                isSolid ? "text-primary" : "text-white"
               }`}
             >
               RAANJHANA
             </h1>
             <p
               className={`text-[0.65rem] tracking-[0.3em] uppercase -mt-1 transition-colors duration-300 ${
-                isScrolled ? "text-stone-500" : "text-white/80"
+                isSolid ? "text-black" : "text-white/80"
               }`}
             >
               Events
@@ -59,8 +63,8 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-sm font-medium tracking-wide uppercase transition-colors hover:text-secondary ${
-                  isScrolled ? "text-foreground" : "text-white"
+                className={`text-sm font-bold tracking-wide uppercase transition-colors hover:text-primary ${
+                  isSolid ? "text-black" : "text-white"
                 }`}
               >
                 {link.name}
@@ -68,9 +72,9 @@ export function Navbar() {
             ))}
             <Link
               href="/contact"
-              className={`px-6 py-2.5 border transition-all duration-300 hover:scale-105 active:scale-95 text-sm font-medium uppercase tracking-wider ${
-                isScrolled
-                  ? "bg-primary text-white border-primary hover:bg-primary/90"
+              className={`px-6 py-3 border-2 transition-all duration-300 hover:scale-105 active:scale-95 text-sm font-bold uppercase tracking-wider ${
+                isSolid
+                  ? "bg-black text-white border-black hover:bg-primary hover:border-primary"
                   : "bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-sm"
               }`}
             >
@@ -81,7 +85,7 @@ export function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             className={`lg:hidden relative z-50 p-2 -mr-2 transition-colors ${
-              isScrolled || isMobileMenuOpen ? "text-primary" : "text-white"
+              isSolid || isMobileMenuOpen ? "text-primary" : "text-white"
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
