@@ -22,7 +22,7 @@ const features = [
 
 export function WhyChooseUs() {
   return (
-    <section className="py-32 bg-black relative">
+    <section className="py-32 bg-white relative">
       <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[90rem]">
         <div className="flex flex-col md:flex-row gap-16 lg:gap-24">
           
@@ -34,11 +34,11 @@ export function WhyChooseUs() {
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               className="sticky top-32"
             >
-              <h2 className="font-heading text-6xl md:text-7xl text-white font-black mb-8 leading-[0.9] uppercase tracking-tighter">
+              <h2 className="font-heading text-6xl md:text-7xl text-black font-black mb-8 leading-[0.9] uppercase tracking-tighter">
                 Our <br/>
                 <span className="text-primary">Edge.</span>
               </h2>
-              <p className="text-stone-400 font-medium leading-relaxed text-lg md:text-xl mb-8 border-l-4 border-primary pl-6">
+              <p className="text-stone-600 font-medium leading-relaxed text-lg md:text-xl mb-8 border-l-4 border-primary pl-6">
                 In a world of copy-paste events, we engineer bespoke masterpieces. We are the agency you call when failure is not an option and ordinary is unacceptable.
               </p>
             </motion.div>
@@ -53,17 +53,17 @@ export function WhyChooseUs() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.8, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                  className="group relative bg-[#111111] p-8 md:p-12 border border-[#222222] hover:border-primary transition-all duration-300"
+                  className="group relative bg-[#F4F4F4] p-8 md:p-12 border border-[#E5E5E5] hover:border-primary transition-all duration-300 hover:shadow-xl"
                 >
                   <div className="flex flex-col gap-6">
-                    <span className="font-heading text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-[#333333] to-[#111111] group-hover:from-primary group-hover:to-[#111111] transition-all duration-500 tracking-tighter leading-none">
+                    <span className="font-heading text-7xl font-black text-transparent bg-clip-text bg-gradient-to-b from-[#CCCCCC] to-[#F4F4F4] group-hover:from-primary group-hover:to-primary/50 transition-all duration-500 tracking-tighter leading-none">
                       {feature.number}
                     </span>
                     <div>
-                      <h3 className="font-heading text-3xl text-white font-bold mb-4 uppercase tracking-tight">
+                      <h3 className="font-heading text-3xl text-black font-bold mb-4 uppercase tracking-tight">
                         {feature.title}
                       </h3>
-                      <p className="text-stone-400 font-medium leading-relaxed text-lg">
+                      <p className="text-stone-600 font-medium leading-relaxed text-lg">
                         {feature.desc}
                       </p>
                     </div>

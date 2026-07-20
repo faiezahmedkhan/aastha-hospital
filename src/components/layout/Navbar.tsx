@@ -43,14 +43,14 @@ export function Navbar() {
           <Link href="/" className="relative z-50">
             <h1
               className={`font-heading text-2xl md:text-3xl font-bold tracking-wider transition-colors duration-300 ${
-                isSolid ? "text-primary" : "text-white"
+                isSolid ? "text-primary" : "text-black"
               }`}
             >
               RAANJHANA
             </h1>
             <p
               className={`text-[0.65rem] tracking-[0.3em] uppercase -mt-1 transition-colors duration-300 ${
-                isSolid ? "text-black" : "text-white/80"
+                isSolid ? "text-black" : "text-black/70"
               }`}
             >
               Events
@@ -64,7 +64,7 @@ export function Navbar() {
                 key={link.name}
                 href={link.href}
                 className={`text-sm font-bold tracking-wide uppercase transition-colors hover:text-primary ${
-                  isSolid ? "text-black" : "text-white"
+                  isSolid ? "text-black" : "text-black/80"
                 }`}
               >
                 {link.name}
@@ -75,7 +75,7 @@ export function Navbar() {
               className={`px-6 py-3 border-2 transition-all duration-300 hover:scale-105 active:scale-95 text-sm font-bold uppercase tracking-wider ${
                 isSolid
                   ? "bg-black text-white border-black hover:bg-primary hover:border-primary"
-                  : "bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-sm"
+                  : "bg-black text-white border-black hover:bg-primary hover:border-primary backdrop-blur-sm"
               }`}
             >
               Plan Event
@@ -85,7 +85,7 @@ export function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             className={`lg:hidden relative z-50 p-2 -mr-2 transition-colors ${
-              isSolid || isMobileMenuOpen ? "text-primary" : "text-white"
+              isSolid || isMobileMenuOpen ? "text-primary" : "text-black"
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >

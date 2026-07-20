@@ -89,12 +89,12 @@ export function ServicesCarousel() {
             <CarouselContent className="-ml-4 md:-ml-6">
               {services.map((service, index) => (
                 <CarouselItem key={index} className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3">
-                  <div className="group relative h-[600px] overflow-hidden cursor-pointer bg-black">
+                  <div className="group relative h-[600px] overflow-hidden cursor-pointer bg-white border border-[#E5E5E5] hover:border-primary transition-colors duration-300">
                     <Image
                       src={service.image}
                       alt={service.title}
                       fill
-                      className="object-cover transition-all duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-40 grayscale group-hover:grayscale-0"
+                      className="object-cover transition-all duration-700 group-hover:scale-105 opacity-10 group-hover:opacity-40 grayscale group-hover:grayscale-0"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     
@@ -106,10 +106,10 @@ export function ServicesCarousel() {
                       </div>
                       
                       <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                        <h3 className="text-white font-heading text-4xl font-black uppercase tracking-tight mb-4 group-hover:text-primary transition-colors duration-300">
+                        <h3 className="text-black font-heading text-4xl font-black uppercase tracking-tight mb-4 group-hover:text-primary transition-colors duration-300">
                           {service.title}
                         </h3>
-                        <p className="text-stone-300 font-medium text-base leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                        <p className="text-stone-600 font-medium text-base leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                           {service.desc}
                         </p>
                       </div>
