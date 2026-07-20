@@ -1,90 +1,77 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { 
-  Palette, 
-  HeartHandshake, 
-  Wallet, 
-  Crown, 
-  Sparkles, 
-  Clock 
-} from "lucide-react";
 
 const features = [
   {
-    icon: <Palette size={32} />,
-    title: "Creative Team",
-    desc: "Our design experts bring innovative ideas and breathtaking concepts to life for every event."
+    number: "01",
+    title: "Uncompromising Vision",
+    desc: "We approach every event as a blank canvas, designing custom architectural spaces and decor that reflect the pinnacle of modern luxury."
   },
   {
-    icon: <HeartHandshake size={32} />,
-    title: "Personalized Planning",
-    desc: "We tailor every detail to reflect your unique personality, style, and love story."
+    number: "02",
+    title: "Impeccable Precision",
+    desc: "From the first thread of linen to the final lighting cue, our logistical execution is invisible, seamless, and flawless."
   },
   {
-    icon: <Wallet size={32} />,
-    title: "Budget Friendly",
-    desc: "Transparent pricing and smart allocation to maximize value without compromising luxury."
-  },
-  {
-    icon: <Crown size={32} />,
-    title: "Premium Vendors",
-    desc: "Exclusive access to top-tier venues, caterers, decorators, and entertainment."
-  },
-  {
-    icon: <Sparkles size={32} />,
-    title: "Stress-Free Execution",
-    desc: "Our team handles every logistical detail, so you can focus on enjoying your special day."
-  },
-  {
-    icon: <Clock size={32} />,
-    title: "Timely Delivery",
-    desc: "Meticulous timeline management ensuring flawless execution from start to finish."
+    number: "03",
+    title: "Exclusive Access",
+    desc: "Our deep relationships grant you entry to the world's most sought-after venues, talent, and culinary artists."
   }
 ];
 
 export function WhyChooseUs() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-32 bg-stone-50">
       <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[90rem]">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="text-primary font-medium tracking-[0.2em] uppercase text-sm mb-4 block">
-              The Raanjhana Difference
-            </span>
-            <h2 className="font-heading text-4xl md:text-5xl text-stone-900 font-bold mb-6">
-              Why Choose Us
-            </h2>
-            <div className="w-20 h-1 bg-secondary mx-auto" />
-          </motion.div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
+        <div className="flex flex-col md:flex-row gap-16 lg:gap-32">
+          
+          <div className="w-full md:w-1/3">
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group bg-stone-50 p-10 rounded-2xl border border-stone-100 hover:border-primary/20 hover:shadow-glow transition-all duration-500"
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="sticky top-32"
             >
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-secondary mb-6 shadow-sm group-hover:scale-110 group-hover:text-primary group-hover:bg-accent transition-all duration-500">
-                {feature.icon}
-              </div>
-              <h3 className="font-heading text-2xl text-stone-900 font-bold mb-4">
-                {feature.title}
-              </h3>
-              <p className="text-stone-600 leading-relaxed">
-                {feature.desc}
+              <h2 className="font-heading text-4xl md:text-5xl text-foreground font-light mb-8 leading-tight">
+                The <span className="italic text-stone-400">Standard</span> of Excellence
+              </h2>
+              <p className="text-stone-500 font-light leading-relaxed">
+                We don't just plan events; we architect experiences. Our philosophy is rooted in the belief that true luxury is subtle, thoughtful, and highly personalized.
               </p>
             </motion.div>
-          ))}
+          </div>
+
+          <div className="w-full md:w-2/3">
+            <div className="flex flex-col">
+              {features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 1, delay: index * 0.2, ease: [0.22, 1, 0.36, 1] }}
+                  className="group relative py-12 border-b border-stone-200 last:border-0"
+                >
+                  <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
+                    <span className="font-heading text-3xl font-light text-stone-300 group-hover:text-primary transition-colors duration-500">
+                      {feature.number}
+                    </span>
+                    <div>
+                      <h3 className="font-heading text-2xl text-foreground font-medium mb-4">
+                        {feature.title}
+                      </h3>
+                      <p className="text-stone-500 font-light leading-relaxed max-w-lg">
+                        {feature.desc}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

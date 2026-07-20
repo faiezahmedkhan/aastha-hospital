@@ -6,91 +6,70 @@ import Image from "next/image";
 
 export function AboutHome() {
   return (
-    <section className="py-24 bg-stone-50 overflow-hidden">
+    <section className="py-32 bg-background overflow-hidden">
       <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[90rem]">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+        <div className="flex flex-col lg:flex-row items-center gap-24">
           
-          {/* Image Grid */}
-          <div className="w-full lg:w-1/2 relative">
-            <div className="grid grid-cols-2 gap-4">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8 }}
-                className="relative h-[400px] rounded-tl-[100px] overflow-hidden"
-              >
-                <Image
-                  src="https://images.pexels.com/photos/5759239/pexels-photo-5759239.jpeg"
-                  alt="Elegant table setting"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative h-[300px] mt-24 rounded-br-[100px] overflow-hidden"
-              >
-                <Image
-                  src="https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg"
-                  alt="Wedding celebration"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </motion.div>
-            </div>
-            
-            {/* Decorative Element */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-secondary rounded-full flex items-center justify-center p-2 text-center"
-            >
-              <div className="w-full h-full border border-white/50 rounded-full flex flex-col items-center justify-center">
-                <span className="text-white font-heading text-2xl font-bold">8+</span>
-                <span className="text-white/90 text-[0.6rem] uppercase tracking-wider">Years of<br/>Excellence</span>
-              </div>
-            </motion.div>
-          </div>
-
           {/* Content */}
-          <div className="w-full lg:w-1/2">
+          <div className="w-full lg:w-5/12 order-2 lg:order-1">
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             >
-              <span className="text-primary font-medium tracking-[0.2em] uppercase text-sm mb-4 block">
-                About Raanjhana Events
-              </span>
-              <h2 className="font-heading text-4xl md:text-5xl text-stone-900 font-bold leading-tight mb-6">
-                Crafting Memories That Last A Lifetime
+              <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-foreground font-light leading-tight mb-10 tracking-wide text-balance">
+                Elevating the <br/>
+                <span className="italic text-stone-400">Ordinary</span> to the <br/>
+                <span className="italic font-medium">Extraordinary</span>
               </h2>
               
-              <div className="w-20 h-1 bg-secondary mb-8" />
-              
-              <p className="text-stone-600 text-lg mb-6 leading-relaxed">
-                At Raanjhana Events, we believe that every event is a story waiting to be told. We specialize in transforming your visions into breathtaking realities, curating luxurious and emotional experiences that reflect your unique personality.
+              <p className="text-stone-500 text-lg mb-8 leading-relaxed font-light">
+                At Raanjhana Events, we believe that luxury is found in the unseen details. It's the seamless flow of an evening, the subtle scent of fresh florals, and the intuitive anticipation of your needs.
               </p>
               
-              <p className="text-stone-600 text-lg mb-10 leading-relaxed">
-                From intimate gatherings to grand destination weddings, our meticulous attention to detail and passionate approach ensures that your special day is executed flawlessly, leaving you to simply enjoy the magic of the moment.
+              <p className="text-stone-500 text-lg mb-14 leading-relaxed font-light">
+                We craft bespoke experiences that transcend expectations, ensuring that your most important moments are celebrated with effortless grace and unparalleled sophistication.
               </p>
               
               <Link
                 href="/about"
-                className="inline-block border-b-2 border-primary text-primary font-medium uppercase tracking-widest pb-1 hover:text-stone-900 hover:border-stone-900 transition-colors"
+                className="group inline-flex items-center gap-4 text-xs font-medium uppercase tracking-[0.2em] text-foreground transition-colors"
               >
-                Discover Our Story
+                Discover Our Heritage
+                <span className="w-8 h-[1px] bg-foreground group-hover:w-16 group-hover:bg-primary transition-all duration-500" />
               </Link>
+            </motion.div>
+          </div>
+
+          {/* Minimalist Image Layout */}
+          <div className="w-full lg:w-7/12 order-1 lg:order-2 relative">
+            <motion.div
+              initial={{ opacity: 0, clipPath: "inset(10% 10% 10% 10%)" }}
+              whileInView={{ opacity: 1, clipPath: "inset(0% 0% 0% 0%)" }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+              className="relative aspect-[4/5] w-full max-w-lg ml-auto"
+            >
+              <Image
+                src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2940&auto=format&fit=crop"
+                alt="Elegant setup"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              
+              {/* Floating Accent Text */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1, delay: 1 }}
+                className="absolute -left-12 bottom-20 bg-background/80 backdrop-blur-md p-6 border border-border"
+              >
+                <p className="font-heading italic text-xl text-foreground mb-1">Since 2016</p>
+                <p className="text-[0.65rem] tracking-[0.2em] uppercase text-stone-400">Defining Luxury</p>
+              </motion.div>
             </motion.div>
           </div>
 

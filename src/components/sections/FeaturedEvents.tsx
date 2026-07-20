@@ -9,44 +9,44 @@ const categories = ["All", "Wedding", "Corporate", "Birthday", "Destination"];
 const events = [
   {
     id: 1,
-    title: "Royal Rajputana Wedding",
+    title: "Royal Rajputana",
     category: "Wedding",
-    image: "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg",
+    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2938&auto=format&fit=crop",
     size: "large",
   },
   {
     id: 2,
-    title: "Tech Summit 2024",
+    title: "TechNova Gala",
     category: "Corporate",
-    image: "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg",
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2940&auto=format&fit=crop",
     size: "small",
   },
   {
     id: 3,
-    title: "Bali Beach Vows",
+    title: "Amalfi Coast Vows",
     category: "Destination",
-    image: "https://images.pexels.com/photos/1488310/pexels-photo-1488310.jpeg",
+    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2940&auto=format&fit=crop",
     size: "medium",
   },
   {
     id: 4,
-    title: "Sweet Sixteen Gala",
+    title: "L'Elegance Soirée",
     category: "Birthday",
-    image: "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg",
+    image: "https://images.unsplash.com/photo-1530103862676-de8892bb6bf3?q=80&w=2940&auto=format&fit=crop",
     size: "small",
   },
   {
     id: 5,
-    title: "Annual Gala Dinner",
+    title: "Annual Summit",
     category: "Corporate",
-    image: "https://images.pexels.com/photos/3184183/pexels-photo-3184183.jpeg",
+    image: "https://images.unsplash.com/photo-1505369711681-44754a61f365?q=80&w=2940&auto=format&fit=crop",
     size: "medium",
   },
   {
     id: 6,
-    title: "Udaipur Palace Wedding",
+    title: "Lake Como Romance",
     category: "Destination",
-    image: "https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg",
+    image: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=2940&auto=format&fit=crop",
     size: "large",
   },
 ];
@@ -59,60 +59,62 @@ export function FeaturedEvents() {
   );
 
   return (
-    <section className="py-24 bg-stone-50">
+    <section className="py-32 bg-background">
       <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[90rem]">
-        <div className="text-center mb-12">
+        <div className="text-center mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span className="text-primary font-medium tracking-[0.2em] uppercase text-sm mb-4 block">
-              Our Portfolio
-            </span>
-            <h2 className="font-heading text-4xl md:text-5xl text-stone-900 font-bold mb-6">
-              Featured Events
+            <h2 className="font-heading text-4xl md:text-5xl text-foreground font-light mb-12">
+              A Glimpse into <span className="italic text-stone-400">Perfection</span>
             </h2>
-            <div className="w-20 h-1 bg-secondary mx-auto mb-10" />
           </motion.div>
 
-          {/* Filters */}
+          {/* Minimalist Filters */}
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-4"
+            transition={{ duration: 1, delay: 0.2 }}
+            className="flex flex-wrap justify-center gap-8 md:gap-12"
           >
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2 rounded-full text-sm font-medium uppercase tracking-wider transition-all duration-300 ${
+                className={`text-xs font-medium uppercase tracking-[0.2em] transition-colors relative pb-2 ${
                   activeCategory === category
-                    ? "bg-primary text-white shadow-md"
-                    : "bg-white text-stone-600 border border-stone-200 hover:border-primary hover:text-primary"
+                    ? "text-foreground"
+                    : "text-stone-400 hover:text-stone-600"
                 }`}
               >
                 {category}
+                {activeCategory === category && (
+                  <motion.div 
+                    layoutId="activeFilter"
+                    className="absolute bottom-0 left-0 right-0 h-[1px] bg-foreground"
+                  />
+                )}
               </button>
             ))}
           </motion.div>
         </div>
 
-        {/* Masonry-like Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[250px]">
+        {/* Ethereal Masonry Grid */}
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 auto-rows-[300px]">
           <AnimatePresence>
             {filteredEvents.map((event) => (
               <motion.div
                 key={event.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4 }}
-                className={`group relative rounded-2xl overflow-hidden cursor-pointer ${
+                initial={{ opacity: 0, filter: "blur(10px)" }}
+                animate={{ opacity: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className={`group relative overflow-hidden cursor-pointer bg-stone-100 ${
                   event.size === "large" ? "md:col-span-2 md:row-span-2" : 
                   event.size === "medium" ? "row-span-2" : "row-span-1"
                 }`}
@@ -121,16 +123,16 @@ export function FeaturedEvents() {
                   src={event.image}
                   alt={event.title}
                   fill
-                  className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                  className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-stone-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-700" />
                 
-                <div className="absolute inset-0 p-8 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <span className="text-secondary text-xs font-medium uppercase tracking-widest mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                <div className="absolute inset-0 p-10 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                  <span className="text-white/80 text-[0.65rem] font-medium uppercase tracking-[0.3em] mb-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-100">
                     {event.category}
                   </span>
-                  <h3 className="text-white font-heading text-2xl md:text-3xl font-bold">
+                  <h3 className="text-white font-heading text-3xl font-light transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 delay-200">
                     {event.title}
                   </h3>
                 </div>

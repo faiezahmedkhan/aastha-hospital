@@ -45,52 +45,52 @@
 }
 
 :root {
-  --background: #FFF8F5;
-  --foreground: #4A4A4A;
+  --background: #FFFFFF;
+  --foreground: #222222;
   --card: #FFFFFF;
-  --card-foreground: #4A4A4A;
+  --card-foreground: #222222;
   --popover: #FFFFFF;
-  --popover-foreground: #4A4A4A;
+  --popover-foreground: #222222;
   --primary: #8B1E3F;
   --primary-foreground: #FFFFFF;
   --secondary: #D4AF37;
-  --secondary-foreground: #1C1C1C;
-  --muted: #fdf5f2;
-  --muted-foreground: #737373;
-  --accent: #FDE8EF;
+  --secondary-foreground: #FFFFFF;
+  --muted: #F8F8F8;
+  --muted-foreground: #888888;
+  --accent: #FDF9FA;
   --accent-foreground: #8B1E3F;
   --success: #22C55E;
   --success-foreground: #ffffff;
   --destructive: #EF4444;
   --destructive-foreground: #ffffff;
-  --border: #f0e6e2;
-  --input: #f0e6e2;
-  --ring: #8B1E3F;
-  --radius: 1rem;
+  --border: #F0F0F0;
+  --input: #F0F0F0;
+  --ring: #D4AF37;
+  --radius: 0rem; /* Ultra luxury often uses sharp corners or perfect circles, avoiding intermediate rounded corners */
 }
 
 .dark {
-  --background: #1C1C1C;
-  --foreground: #FFF8F5;
-  --card: #262626;
-  --card-foreground: #FFF8F5;
-  --popover: #262626;
-  --popover-foreground: #FFF8F5;
+  --background: #0A0A0A;
+  --foreground: #FAFAFA;
+  --card: #111111;
+  --card-foreground: #FAFAFA;
+  --popover: #111111;
+  --popover-foreground: #FAFAFA;
   --primary: #8B1E3F;
   --primary-foreground: #FFFFFF;
   --secondary: #D4AF37;
-  --secondary-foreground: #1C1C1C;
-  --muted: #333333;
+  --secondary-foreground: #0A0A0A;
+  --muted: #1A1A1A;
   --muted-foreground: #A3A3A3;
-  --accent: #3b0d1a;
+  --accent: #2A0913;
   --accent-foreground: #FFFFFF;
   --success: #22C55E;
   --success-foreground: #ffffff;
   --destructive: #7f1d1d;
   --destructive-foreground: #ffffff;
-  --border: #333333;
-  --input: #333333;
-  --ring: #8B1E3F;
+  --border: #222222;
+  --input: #222222;
+  --ring: #D4AF37;
 }
 
 @layer base {

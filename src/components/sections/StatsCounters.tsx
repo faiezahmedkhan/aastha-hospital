@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView, useAnimation } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 interface StatItemProps {
   value: number;
@@ -37,11 +37,11 @@ function Counter({ value, suffix = "", label, duration = 2 }: StatItemProps) {
 
   return (
     <div ref={ref} className="flex flex-col items-center text-center p-6">
-      <h3 className="font-heading text-5xl md:text-6xl text-primary font-bold mb-2">
+      <h3 className="font-heading text-4xl md:text-5xl text-foreground font-light mb-4">
         {count}
-        {suffix}
+        <span className="text-stone-400">{suffix}</span>
       </h3>
-      <p className="text-stone-600 font-medium uppercase tracking-widest text-sm">
+      <p className="text-stone-500 font-medium uppercase tracking-[0.2em] text-xs">
         {label}
       </p>
     </div>
@@ -50,23 +50,23 @@ function Counter({ value, suffix = "", label, duration = 2 }: StatItemProps) {
 
 export function StatsCounters() {
   const stats = [
-    { value: 500, suffix: "+", label: "Events Hosted" },
+    { value: 500, suffix: "+", label: "Events Curated" },
     { value: 300, suffix: "+", label: "Happy Couples" },
-    { value: 8, suffix: "+", label: "Years Experience" },
+    { value: 8, suffix: "+", label: "Years Defining Luxury" },
     { value: 98, suffix: "%", label: "Client Satisfaction" },
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[90rem]">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-stone-200">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 border-y border-stone-100 py-12">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 1, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
               <Counter value={stat.value} suffix={stat.suffix} label={stat.label} />
             </motion.div>
