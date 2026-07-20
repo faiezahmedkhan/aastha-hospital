@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const packages = [
   {
-    name: "The Intimate",
+    name: "Intimate",
     desc: "A beautifully curated experience for smaller, private gatherings where every detail is magnified.",
     features: [
       "Bespoke Venue Curation",
@@ -15,7 +15,7 @@ const packages = [
     ],
   },
   {
-    name: "The Signature",
+    name: "Signature",
     desc: "Our hallmark service for grand celebrations, offering comprehensive design and flawless execution.",
     features: [
       "Complete Venue Transformation",
@@ -26,7 +26,7 @@ const packages = [
     highlight: true,
   },
   {
-    name: "The Royal",
+    name: "Royal",
     desc: "An uncompromising, limitless approach to luxury event planning for the most discerning clients.",
     features: [
       "Global Destination Logistics",
@@ -39,82 +39,78 @@ const packages = [
 
 export function PricingPackages() {
   return (
-    <section className="py-32 bg-background relative overflow-hidden">
-      {/* Decorative floral/damask style background hint could go here, for now using a soft radial gradient */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[90rem] relative z-10">
-        <div className="text-center mb-24 max-w-3xl mx-auto">
+    <section className="py-32 bg-white relative">
+      <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[90rem]">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-2xl"
           >
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <span className="w-12 h-[1px] bg-secondary"></span>
-              <span className="text-secondary font-medium tracking-[0.3em] uppercase text-xs">Investments</span>
-              <span className="w-12 h-[1px] bg-secondary"></span>
-            </div>
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-foreground font-medium mb-8">
-              Curated <span className="italic text-primary font-light">Experiences</span>
+            <h2 className="font-heading text-5xl md:text-6xl lg:text-7xl text-black font-black leading-[0.9] uppercase tracking-tighter">
+              Bespoke <br/>
+              <span className="text-primary">Engagements.</span>
             </h2>
-            <p className="text-muted-foreground font-light leading-relaxed text-lg">
-              We offer highly tailored engagements. Each service is custom-quoted to ensure absolute perfection and regal elegance for your specific vision.
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="max-w-sm"
+          >
+            <p className="text-stone-600 font-medium leading-relaxed">
+              We offer highly tailored engagements. Each service is custom-quoted to ensure absolute perfection.
             </p>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-y-2 border-black">
           {packages.map((pkg, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: index * 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className={`flex flex-col h-full p-10 relative overflow-hidden ${
+              transition={{ duration: 0.8, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className={`flex flex-col h-full p-10 md:p-14 border-b-2 md:border-b-0 md:border-r-2 border-black last:border-0 ${
                 pkg.highlight 
-                  ? "bg-primary text-white shadow-2xl scale-105 z-10 border-2 border-secondary" 
-                  : "bg-white text-foreground shadow-xl border border-border"
-              }`}
+                  ? "bg-black text-white" 
+                  : "bg-white text-black hover:bg-stone-50"
+              } transition-colors duration-300`}
             >
-              {/* Corner Ornaments */}
-              <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-secondary/50" />
-              <div className="absolute top-2 right-2 w-4 h-4 border-t border-r border-secondary/50" />
-              <div className="absolute bottom-2 left-2 w-4 h-4 border-b border-l border-secondary/50" />
-              <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-secondary/50" />
-
-              <div className="mb-10 text-center relative z-10">
-                <h3 className={`font-heading text-3xl font-medium mb-4 ${pkg.highlight ? "text-white" : "text-primary"}`}>
+              <div className="mb-12">
+                <h3 className={`font-heading text-4xl font-black uppercase tracking-tight mb-4 ${pkg.highlight ? "text-primary" : "text-black"}`}>
                   {pkg.name}
                 </h3>
-                <p className={`font-light text-sm leading-relaxed h-16 ${pkg.highlight ? "text-white/80" : "text-muted-foreground"}`}>
+                <p className={`font-medium text-base leading-relaxed h-20 ${pkg.highlight ? "text-stone-400" : "text-stone-600"}`}>
                   {pkg.desc}
                 </p>
               </div>
               
-              <div className="flex-grow relative z-10">
-                <ul className="space-y-5 mb-12">
+              <div className="flex-grow">
+                <ul className="space-y-6 mb-12">
                   {pkg.features.map((feature, i) => (
-                    <li key={i} className={`flex items-center gap-4 text-sm font-light ${pkg.highlight ? "text-white/90" : "text-foreground"}`}>
-                      <span className={`w-1.5 h-1.5 rotate-45 shrink-0 ${pkg.highlight ? "bg-secondary" : "bg-primary"}`} />
+                    <li key={i} className={`flex items-start gap-4 font-bold text-sm tracking-wide ${pkg.highlight ? "text-white" : "text-black"}`}>
+                      <span className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${pkg.highlight ? "bg-primary" : "bg-black"}`} />
                       {feature}
                     </li>
                   ))}
                 </ul>
               </div>
               
-              <div className="text-center relative z-10">
+              <div>
                 <Link
                   href="/contact"
-                  className={`inline-block w-full py-4 text-sm font-medium uppercase tracking-[0.2em] transition-colors border ${
+                  className={`inline-block w-full py-5 text-sm font-bold uppercase tracking-[0.2em] transition-all text-center border-2 ${
                     pkg.highlight 
-                      ? "bg-secondary text-[#1C1C1C] border-secondary hover:bg-transparent hover:text-secondary" 
-                      : "bg-transparent text-primary border-primary hover:bg-primary hover:text-white"
+                      ? "bg-primary text-white border-primary hover:bg-transparent hover:text-primary" 
+                      : "bg-black text-white border-black hover:bg-white hover:text-black"
                   }`}
                 >
-                  Inquire Now
+                  Inquire
                 </Link>
               </div>
             </motion.div>
