@@ -36,22 +36,24 @@ const services = [
 
 export function ServicesCarousel() {
   return (
-    <section className="py-32 bg-background overflow-hidden relative">
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[90rem] relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 border-b border-border pb-12">
+    <section className="py-24 md:py-32 bg-primary relative overflow-hidden">
+      {/* Subtle watercolor overlay */}
+      <div className="absolute inset-0 bg-white/10 opacity-50 mix-blend-overlay pointer-events-none" />
+
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-[90rem] relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 text-center md:text-left">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-2xl"
+            className="max-w-2xl w-full"
           >
             <div className="mb-4">
-              <span className="text-primary font-medium tracking-[0.2em] uppercase text-xs">Our Offerings</span>
+              <span className="text-white/80 font-medium tracking-[0.2em] uppercase text-xs">Our Offerings</span>
             </div>
-            <h2 className="font-heading text-5xl md:text-6xl text-foreground font-normal leading-[1.1]">
-              A symphony of <br/>
-              <span className="italic text-primary">Experiences.</span>
+            <h2 className="font-script text-6xl md:text-7xl text-white font-normal">
+              A symphony of Experiences
             </h2>
           </motion.div>
           
@@ -60,10 +62,11 @@ export function ServicesCarousel() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
+            className="w-full md:w-auto"
           >
             <Link
               href="/services"
-              className="text-foreground text-xs font-medium uppercase tracking-[0.15em] border-b border-primary pb-1 hover:text-primary transition-colors"
+              className="text-white text-xs font-medium uppercase tracking-[0.15em] border-b border-white pb-1 hover:text-secondary hover:border-secondary transition-colors"
             >
               View All Services
             </Link>
@@ -86,34 +89,38 @@ export function ServicesCarousel() {
             <CarouselContent className="-ml-4 md:-ml-8">
               {services.map((service, index) => (
                 <CarouselItem key={index} className="pl-4 md:pl-8 md:basis-1/2 lg:basis-1/3 py-4">
-                  <div className="group relative h-[600px] overflow-hidden cursor-pointer rounded-t-full rounded-b-sm bg-muted shadow-sm">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover transition-transform duration-[4s] ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
+                  <div className="group relative h-[500px] overflow-hidden cursor-pointer bg-white shadow-xl p-3 pb-8 transition-transform hover:-translate-y-2 duration-500">
+                    <div className="relative w-full h-[350px] mb-6 overflow-hidden">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover transition-transform duration-[4s] ease-out group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </div>
                     
-                    {/* Soft gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-80" />
-                    
-                    <div className="absolute inset-x-0 bottom-0 p-10 flex flex-col items-center text-center z-10">
-                      <h3 className="text-foreground font-heading text-3xl font-normal mb-4">
+                    <div className="text-center px-4">
+                      <h3 className="text-foreground font-script text-4xl mb-2">
                         {service.title}
                       </h3>
-                      <p className="text-muted-foreground font-light text-sm leading-relaxed max-w-[250px]">
+                      <p className="text-foreground/70 font-light text-xs leading-relaxed">
                         {service.desc}
                       </p>
                     </div>
+                    
+                    {/* Small botanical corner */}
+                    <svg className="absolute bottom-2 right-2 w-6 h-6 text-primary/30" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
             
-            <div className="flex justify-center gap-6 mt-16">
-              <CarouselPrevious className="position-relative static translate-x-0 translate-y-0 h-14 w-14 rounded-full border border-primary/30 bg-transparent text-primary hover:bg-primary hover:text-primary-foreground transition-all" />
-              <CarouselNext className="position-relative static translate-x-0 translate-y-0 h-14 w-14 rounded-full border border-primary/30 bg-transparent text-primary hover:bg-primary hover:text-primary-foreground transition-all" />
+            <div className="flex justify-center gap-6 mt-12">
+              <CarouselPrevious className="position-relative static translate-x-0 translate-y-0 h-14 w-14 rounded-full border border-white/50 bg-transparent text-white hover:bg-white hover:text-primary transition-all" />
+              <CarouselNext className="position-relative static translate-x-0 translate-y-0 h-14 w-14 rounded-full border border-white/50 bg-transparent text-white hover:bg-white hover:text-primary transition-all" />
             </div>
           </Carousel>
         </motion.div>

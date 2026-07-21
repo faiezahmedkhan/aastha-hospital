@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Check } from "lucide-react";
 
 const packages = [
   {
@@ -19,7 +20,7 @@ const packages = [
     desc: "Our hallmark offering for grand, breathtaking celebrations, providing comprehensive design.",
     features: [
       "Complete Venue Transformation",
-      "Immersive Ethereal Design",
+      "Immersive Botanical Design",
       "Curated Artisan Vendors",
       "Multi-day Event Direction",
     ],
@@ -39,13 +40,12 @@ const packages = [
 
 export function PricingPackages() {
   return (
-    <section className="py-32 bg-accent/20 relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
       {/* Decorative Floral/Watercolor background blur */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/30 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[90rem] relative z-10">
-        <div className="text-center mb-20 max-w-3xl mx-auto">
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-[90rem] relative z-10">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -53,18 +53,18 @@ export function PricingPackages() {
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="mb-4">
-              <span className="text-primary font-medium tracking-[0.2em] uppercase text-xs">Curated Collections</span>
+              <span className="text-secondary font-medium tracking-[0.2em] uppercase text-xs">Curated Collections</span>
             </div>
-            <h2 className="font-heading text-5xl md:text-6xl text-foreground font-normal leading-[1.1] mb-6">
-              Bespoke <span className="italic text-primary">Engagements.</span>
+            <h2 className="font-script text-6xl md:text-7xl text-foreground font-normal mb-6">
+              Bespoke Engagements
             </h2>
-            <p className="text-muted-foreground font-light leading-relaxed">
+            <p className="text-foreground/70 font-light leading-relaxed">
               We offer highly tailored engagements. Each collection is custom-quoted to ensure absolute perfection, reflecting your unique love story.
             </p>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 lg:gap-8">
           {packages.map((pkg, index) => (
             <motion.div
               key={index}
@@ -72,23 +72,23 @@ export function PricingPackages() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className={`relative flex flex-col h-full p-12 bg-background border ${
+              className={`relative flex flex-col h-full p-10 bg-white shadow-xl ${
                 pkg.highlight 
-                  ? "border-primary/40 shadow-glow scale-105 z-10" 
-                  : "border-border shadow-sm"
-              } transition-all duration-500`}
+                  ? "border-t-4 border-secondary scale-105 z-10" 
+                  : "border border-border/50"
+              } transition-all duration-500 hover:-translate-y-2`}
             >
               {pkg.highlight && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-background text-primary border border-primary/20 text-[0.65rem] font-medium uppercase tracking-[0.2em] px-4 py-1">
+                <div className="absolute top-0 right-8 bg-secondary text-white text-[0.55rem] font-medium uppercase tracking-[0.2em] px-3 py-2 rounded-b-md shadow-sm">
                   Most Beloved
                 </div>
               )}
 
-              <div className="mb-10 text-center border-b border-border/50 pb-10">
-                <h3 className="font-heading text-3xl font-normal mb-4 text-foreground italic">
+              <div className="mb-10 text-center border-b border-border/50 pb-8 mt-4">
+                <h3 className="font-script text-4xl font-normal mb-4 text-foreground">
                   {pkg.name}
                 </h3>
-                <p className="font-light text-sm leading-relaxed text-muted-foreground">
+                <p className="font-light text-xs leading-relaxed text-foreground/70">
                   {pkg.desc}
                 </p>
               </div>
@@ -106,10 +106,10 @@ export function PricingPackages() {
               <div className="text-center mt-auto">
                 <Link
                   href="/contact"
-                  className={`inline-block border-b pb-1 text-xs font-medium uppercase tracking-[0.15em] transition-colors ${
+                  className={`inline-block border pb-2 pt-2 px-8 text-xs font-medium uppercase tracking-[0.15em] transition-colors ${
                     pkg.highlight 
-                      ? "text-primary border-primary hover:text-foreground hover:border-foreground" 
-                      : "text-foreground border-foreground/30 hover:border-foreground"
+                      ? "bg-primary text-white border-primary hover:bg-white hover:text-primary" 
+                      : "bg-transparent text-foreground border-foreground/30 hover:border-primary hover:text-primary"
                   }`}
                 >
                   Inquire

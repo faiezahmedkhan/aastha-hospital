@@ -6,73 +6,78 @@ import Image from "next/image";
 
 export function AboutHome() {
   return (
-    <section className="py-32 bg-background overflow-hidden relative border-t border-border/50">
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[90rem] relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+    <section className="py-24 md:py-32 bg-primary relative overflow-hidden">
+      {/* Subtle watercolor/texture effect (simulated with large blur) */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 blur-[100px] rounded-full pointer-events-none mix-blend-overlay" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-black/5 blur-[120px] rounded-full pointer-events-none mix-blend-overlay" />
+      
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-[90rem] relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
           
           <div className="w-full lg:w-1/2">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              className="relative aspect-[3/4] w-full max-w-md mx-auto"
-            >
-              <div className="absolute inset-0 border border-primary/20 translate-x-6 translate-y-6 z-0" />
-              <div className="relative w-full h-full z-10 overflow-hidden shadow-soft">
-                <Image
-                  src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=2940&auto=format&fit=crop"
-                  alt="Romantic bride details"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-              
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="absolute -bottom-8 -right-8 bg-background border border-border shadow-soft p-8 z-20 flex flex-col items-center justify-center text-center w-40 h-40"
-              >
-                <p className="font-heading font-normal text-4xl mb-2 text-foreground italic">08<span className="text-xl">+</span></p>
-                <p className="text-[0.6rem] font-medium tracking-[0.2em] uppercase text-muted-foreground">Years of<br/>Devotion</p>
-              </motion.div>
-            </motion.div>
-          </div>
-
-          <div className="w-full lg:w-1/2">
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="relative w-full aspect-[4/5] max-w-lg mx-auto"
             >
-              <div className="mb-6">
-                <span className="text-primary font-medium tracking-[0.2em] uppercase text-xs">Our Story</span>
+              {/* White overlap card for the image */}
+              <div className="absolute inset-0 bg-white shadow-2xl translate-x-4 -translate-y-4 md:translate-x-6 md:-translate-y-6 z-0" />
+              
+              <div className="relative w-full h-full z-10 p-3 bg-white shadow-xl">
+                <div className="relative w-full h-full overflow-hidden">
+                  <Image
+                    src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2940&auto=format&fit=crop"
+                    alt="Romantic wedding ceremony"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
               </div>
               
-              <h2 className="font-heading text-5xl md:text-6xl text-foreground font-normal leading-[1.1] mb-8">
-                Curating <br/>
-                <span className="italic text-primary">Unforgettable</span> <br/>
-                Romance.
-              </h2>
+              {/* Decorative Leaf SVG */}
+              <div className="absolute -bottom-10 -right-10 w-32 h-32 opacity-80 z-20">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M50 100C50 100 20 80 20 50C20 20 50 0 50 0C50 0 80 20 80 50C80 80 50 100 50 100Z" fill="#D4AF37" fillOpacity="0.2"/>
+                  <path d="M50 100C50 100 30 75 30 50C30 25 50 10 50 10" stroke="#D4AF37" strokeWidth="2"/>
+                </svg>
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="w-full lg:w-1/2 mt-12 lg:mt-0">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="bg-white p-10 md:p-16 shadow-2xl relative z-10"
+            >
+              <div className="text-center mb-8">
+                <h2 className="font-script text-6xl md:text-7xl text-foreground font-normal mb-2">
+                  Our Story
+                </h2>
+                <div className="w-16 h-px bg-secondary mx-auto"></div>
+              </div>
               
-              <p className="text-muted-foreground text-lg mb-6 font-light leading-relaxed max-w-lg">
+              <p className="text-foreground/80 text-center text-sm md:text-base mb-6 font-light leading-loose">
                 Raanjhana Events is an intimate, luxury design house. We specialize in transforming your grandest visions into meticulously crafted, deeply romantic realities.
               </p>
               
-              <p className="text-muted-foreground/80 text-base mb-12 font-light leading-relaxed max-w-lg">
-                Whether it's an ethereal destination wedding or a poetic private soirée, our approach marries delicate artistic elegance with flawless, invisible orchestration.
+              <p className="text-foreground/70 text-center text-sm md:text-base mb-10 font-light leading-loose">
+                Whether it's an ethereal destination wedding or a poetic private soirée, our approach marries delicate artistic elegance with flawless orchestration, creating memories that last a lifetime.
               </p>
               
-              <Link
-                href="/about"
-                className="inline-block border-b border-foreground pb-1 text-xs font-medium uppercase tracking-[0.15em] text-foreground hover:text-primary hover:border-primary transition-colors"
-              >
-                Discover Our Heritage
-              </Link>
+              <div className="text-center">
+                <Link
+                  href="/about"
+                  className="inline-block border-b border-secondary pb-1 text-xs font-medium uppercase tracking-[0.2em] text-foreground hover:text-primary transition-colors"
+                >
+                  Read More
+                </Link>
+              </div>
             </motion.div>
           </div>
 

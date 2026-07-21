@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins, Playfair_Display } from "next/font/google";
+import { Poppins, Playfair_Display, Great_Vibes } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -12,6 +12,12 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500"],
   variable: "--font-body",
+});
+
+const greatVibes = Great_Vibes({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-script",
 });
 
 export const metadata: Metadata = {
@@ -62,7 +68,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${poppins.variable} ${playfair.variable} font-sans antialiased selection:bg-primary selection:text-white`}
+        className={`${poppins.variable} ${playfair.variable} ${greatVibes.variable} font-sans antialiased selection:bg-primary selection:text-white`}
       >
         <main>{children}</main>
       </body>

@@ -34,7 +34,7 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isSolid
-          ? "bg-background/95 backdrop-blur-md shadow-soft py-4 border-b border-border/50"
+          ? "bg-background/95 backdrop-blur-md shadow-sm py-4 border-b border-border"
           : "bg-transparent py-6"
       }`}
     >
@@ -42,15 +42,15 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           <Link href="/" className="relative z-50">
             <h1
-              className={`font-heading text-2xl md:text-3xl font-normal tracking-wider transition-colors duration-300 ${
-                isSolid ? "text-foreground" : "text-foreground"
+              className={`font-script text-4xl md:text-5xl transition-colors duration-300 ${
+                isSolid ? "text-foreground" : "text-white"
               }`}
             >
               RAANJHANA
             </h1>
             <p
-              className={`text-[0.6rem] tracking-[0.3em] uppercase -mt-1 transition-colors duration-300 ${
-                isSolid ? "text-muted-foreground" : "text-muted-foreground"
+              className={`text-[0.55rem] tracking-[0.4em] uppercase -mt-2 transition-colors duration-300 ${
+                isSolid ? "text-primary" : "text-white/80"
               }`}
             >
               Events
@@ -63,8 +63,8 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-[0.65rem] font-medium tracking-[0.15em] uppercase transition-colors hover:text-primary ${
-                  isSolid ? "text-foreground/80" : "text-foreground/80"
+                className={`text-[0.65rem] font-medium tracking-[0.15em] uppercase transition-colors hover:text-secondary ${
+                  isSolid ? "text-foreground/80" : "text-white/90"
                 }`}
               >
                 {link.name}
@@ -72,10 +72,10 @@ export function Navbar() {
             ))}
             <Link
               href="/contact"
-              className={`px-8 py-3 rounded-sm transition-all duration-300 hover:bg-primary/90 text-[0.65rem] font-medium uppercase tracking-[0.15em] ${
+              className={`px-8 py-3 rounded-none transition-all duration-300 text-[0.65rem] font-medium uppercase tracking-[0.15em] border ${
                 isSolid
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-transparent border border-primary text-foreground hover:text-primary-foreground hover:bg-primary"
+                  ? "bg-primary text-white border-primary hover:bg-transparent hover:text-primary"
+                  : "bg-transparent border-white text-white hover:bg-white hover:text-primary"
               }`}
             >
               Plan Event
@@ -85,7 +85,7 @@ export function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             className={`lg:hidden relative z-50 p-2 -mr-2 transition-colors ${
-              isSolid || isMobileMenuOpen ? "text-foreground" : "text-foreground"
+              isSolid || isMobileMenuOpen ? "text-foreground" : "text-white"
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >

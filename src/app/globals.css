@@ -9,6 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
+  --font-script: var(--font-script);
   --font-mono: var(--font-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -45,52 +46,52 @@
 }
 
 :root {
-  --background: #FFFBF7; /* Soft Cream */
-  --foreground: #2A2421; /* Charcoal/Brown */
+  --background: #F9F8F6; /* Cream/Off-white */
+  --foreground: #3A4035; /* Dark Olive Text */
   --card: #FFFFFF;
-  --card-foreground: #2A2421;
+  --card-foreground: #3A4035;
   --popover: #FFFFFF;
-  --popover-foreground: #2A2421;
-  --primary: #C5A880; /* Muted Gold */
+  --popover-foreground: #3A4035;
+  --primary: #8BA382; /* Sage Green */
   --primary-foreground: #FFFFFF;
-  --secondary: #F2D4D7; /* Soft Blush Pink */
-  --secondary-foreground: #2A2421;
-  --muted: #F5EFEB; /* Warm off-white */
-  --muted-foreground: #8C827A;
-  --accent: #F5EFEB;
-  --accent-foreground: #C5A880;
-  --success: #A3B19B; /* Sage Green */
+  --secondary: #D4AF37; /* Gold Accents */
+  --secondary-foreground: #3A4035;
+  --muted: #EEEDE8;
+  --muted-foreground: #8B9483;
+  --accent: #EEEDE8;
+  --accent-foreground: #8BA382;
+  --success: #8BA382;
   --success-foreground: #FFFFFF;
-  --destructive: #D48C8C; /* Soft Red */
+  --destructive: #D48C8C;
   --destructive-foreground: #ffffff;
-  --border: #E8DFD8;
-  --input: #E8DFD8;
-  --ring: #C5A880;
-  --radius: 1rem; /* Elegant slight rounding */
+  --border: #E8E6DF;
+  --input: #E8E6DF;
+  --ring: #8BA382;
+  --radius: 0.5rem; /* Slight rounding, not pill */
 }
 
 .dark {
-  --background: #1A1817; /* Very dark warm gray */
-  --foreground: #F5EFEB;
-  --card: #242220;
-  --card-foreground: #F5EFEB;
-  --popover: #242220;
-  --popover-foreground: #F5EFEB;
-  --primary: #C5A880;
-  --primary-foreground: #1A1817;
-  --secondary: #F2D4D7;
-  --secondary-foreground: #1A1817;
-  --muted: #332F2D;
-  --muted-foreground: #A69D98;
-  --accent: #332F2D;
-  --accent-foreground: #F5EFEB;
-  --success: #A3B19B;
-  --success-foreground: #1A1817;
+  --background: #232720; /* Very Dark Olive */
+  --foreground: #F9F8F6;
+  --card: #2E332A;
+  --card-foreground: #F9F8F6;
+  --popover: #2E332A;
+  --popover-foreground: #F9F8F6;
+  --primary: #8BA382;
+  --primary-foreground: #FFFFFF;
+  --secondary: #D4AF37;
+  --secondary-foreground: #232720;
+  --muted: #3E453A;
+  --muted-foreground: #B5BDB0;
+  --accent: #3E453A;
+  --accent-foreground: #F9F8F6;
+  --success: #8BA382;
+  --success-foreground: #FFFFFF;
   --destructive: #D48C8C;
   --destructive-foreground: #ffffff;
-  --border: #332F2D;
-  --input: #332F2D;
-  --ring: #C5A880;
+  --border: #3E453A;
+  --input: #3E453A;
+  --ring: #8BA382;
 }
 
 @layer base {
