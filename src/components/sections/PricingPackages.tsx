@@ -2,36 +2,35 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Check } from "lucide-react";
 
 const packages = [
   {
-    name: "Intimate",
-    desc: "A beautifully curated experience for smaller, private gatherings where every detail is magnified.",
+    name: "The Heirloom",
+    desc: "A beautifully curated, delicate experience for intimate gatherings where romance is magnified.",
     features: [
       "Bespoke Venue Curation",
-      "Minimalist Floral Architecture",
-      "Private Chef Coordination",
+      "Romantic Floral Styling",
+      "Personal Chef Coordination",
       "Seamless Day Management",
     ],
   },
   {
-    name: "Signature",
-    desc: "Our hallmark service for grand celebrations, offering comprehensive design and flawless execution.",
+    name: "The Signature",
+    desc: "Our hallmark offering for grand, breathtaking celebrations, providing comprehensive design.",
     features: [
       "Complete Venue Transformation",
-      "Immersive Thematic Design",
-      "Full Vendor Curation",
+      "Immersive Ethereal Design",
+      "Curated Artisan Vendors",
       "Multi-day Event Direction",
     ],
     highlight: true,
   },
   {
-    name: "Royal",
-    desc: "An uncompromising, limitless approach to luxury event planning for the most discerning clients.",
+    name: "The Imperial",
+    desc: "An uncompromising, limitless approach to luxury planning for the most discerning romantics.",
     features: [
       "Global Destination Logistics",
-      "Celebrity Talent Procurement",
+      "Exclusive Entertainment",
       "Custom Haute Couture Decor",
       "24/7 Dedicated Concierge",
     ],
@@ -40,36 +39,27 @@ const packages = [
 
 export function PricingPackages() {
   return (
-    <section className="py-32 bg-[#0A0A0A] relative overflow-hidden">
-      {/* Decorative Gradient Background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] bg-gradient-to-r from-primary/10 via-secondary/5 to-primary/10 blur-[100px] -z-10" />
+    <section className="py-32 bg-accent/20 relative overflow-hidden">
+      {/* Decorative Floral/Watercolor background blur */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/30 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/10 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[90rem]">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+      <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[90rem] relative z-10">
+        <div className="text-center mb-20 max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-2xl"
           >
-            <div className="inline-flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 shadow-sm rounded-full px-4 py-1.5 mb-6">
-              <span className="text-primary font-medium tracking-[0.1em] uppercase text-xs">Tailored Offerings</span>
+            <div className="mb-4">
+              <span className="text-primary font-medium tracking-[0.2em] uppercase text-xs">Curated Collections</span>
             </div>
-            <h2 className="font-heading text-5xl md:text-6xl text-white font-normal leading-[1.1]">
-              Bespoke <br/>
-              <span className="italic font-medium text-primary">Engagements.</span>
+            <h2 className="font-heading text-5xl md:text-6xl text-foreground font-normal leading-[1.1] mb-6">
+              Bespoke <span className="italic text-primary">Engagements.</span>
             </h2>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="max-w-sm"
-          >
-            <p className="text-stone-400 font-light leading-relaxed">
-              We offer highly tailored engagements. Each service is custom-quoted to ensure absolute perfection and exclusivity.
+            <p className="text-muted-foreground font-light leading-relaxed">
+              We offer highly tailored engagements. Each collection is custom-quoted to ensure absolute perfection, reflecting your unique love story.
             </p>
           </motion.div>
         </div>
@@ -82,50 +72,47 @@ export function PricingPackages() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className={`relative flex flex-col h-full p-10 rounded-[2rem] border ${
+              className={`relative flex flex-col h-full p-12 bg-background border ${
                 pkg.highlight 
-                  ? "bg-white/10 border-primary/30 shadow-2xl shadow-primary/20 scale-105 z-10 backdrop-blur-xl" 
-                  : "bg-white/5 backdrop-blur-md border-white/10 shadow-xl"
-              } transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 hover:bg-white/10 hover:border-white/20`}
+                  ? "border-primary/40 shadow-glow scale-105 z-10" 
+                  : "border-border shadow-sm"
+              } transition-all duration-500`}
             >
               {pkg.highlight && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">
-                  Most Popular
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-background text-primary border border-primary/20 text-[0.65rem] font-medium uppercase tracking-[0.2em] px-4 py-1">
+                  Most Beloved
                 </div>
               )}
 
-              <div className="mb-10 text-center">
-                <h3 className="font-heading text-3xl font-medium mb-4 text-white">
+              <div className="mb-10 text-center border-b border-border/50 pb-10">
+                <h3 className="font-heading text-3xl font-normal mb-4 text-foreground italic">
                   {pkg.name}
                 </h3>
-                <p className="font-light text-sm leading-relaxed text-stone-400 h-16">
+                <p className="font-light text-sm leading-relaxed text-muted-foreground">
                   {pkg.desc}
                 </p>
               </div>
               
               <div className="flex-grow">
-                <ul className="space-y-5 mb-12">
+                <ul className="space-y-6 mb-12">
                   {pkg.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3 font-medium text-sm text-stone-300">
-                      <div className={`mt-0.5 p-1 rounded-full ${pkg.highlight ? 'bg-primary/20 text-primary' : 'bg-white/10 text-stone-400'}`}>
-                        <Check size={12} strokeWidth={3} />
-                      </div>
+                    <li key={i} className="flex items-center text-center justify-center font-light text-sm text-foreground">
                       {feature}
                     </li>
                   ))}
                 </ul>
               </div>
               
-              <div>
+              <div className="text-center mt-auto">
                 <Link
                   href="/contact"
-                  className={`inline-block w-full py-4 text-sm font-medium uppercase tracking-[0.1em] rounded-full transition-all text-center ${
+                  className={`inline-block border-b pb-1 text-xs font-medium uppercase tracking-[0.15em] transition-colors ${
                     pkg.highlight 
-                      ? "bg-primary text-white shadow-lg shadow-primary/30 hover:bg-primary/90 hover:scale-105 active:scale-95" 
-                      : "bg-white/5 text-stone-300 border border-white/10 hover:bg-primary hover:border-primary hover:text-white hover:scale-105 active:scale-95"
+                      ? "text-primary border-primary hover:text-foreground hover:border-foreground" 
+                      : "text-foreground border-foreground/30 hover:border-foreground"
                   }`}
                 >
-                  Inquire Now
+                  Inquire
                 </Link>
               </div>
             </motion.div>
