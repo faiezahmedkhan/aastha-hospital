@@ -7,9 +7,9 @@ import Image from "next/image";
 export function AboutHome() {
   return (
     <section className="py-24 md:py-32 bg-primary relative overflow-hidden">
-      {/* Subtle watercolor/texture effect (simulated with large blur) */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 blur-[100px] rounded-full pointer-events-none mix-blend-overlay" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-black/5 blur-[120px] rounded-full pointer-events-none mix-blend-overlay" />
+      {/* Lightweight background gradient instead of expensive blur/mix-blend */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%)' }} />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0) 70%)' }} />
       
       <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-[90rem] relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
@@ -28,7 +28,7 @@ export function AboutHome() {
               <div className="relative w-full h-full z-10 p-3 bg-white shadow-xl">
                 <div className="relative w-full h-full overflow-hidden">
                   <Image
-                    src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2940&auto=format&fit=crop"
+                    src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80"
                     alt="Romantic wedding ceremony"
                     fill
                     className="object-cover"

@@ -15,7 +15,7 @@ export function Hero() {
         className="absolute inset-0 w-full h-full z-0"
       >
         <Image
-          src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2940&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80"
           alt="Rustic romantic wedding"
           fill
           priority

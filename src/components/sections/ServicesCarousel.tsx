@@ -14,22 +14,22 @@ import {
 const services = [
   {
     title: "Wedding Design",
-    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2940&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80",
     desc: "Bespoke, poetic curation for your perfect day, handled with absolute grace."
   },
   {
     title: "Destination Romance",
-    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2938&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80",
     desc: "Exotic, breathtaking locations and seamless global logistics for a magical getaway."
   },
   {
     title: "Floral Artistry",
-    image: "https://images.unsplash.com/photo-1522748906645-95d8ad838382?q=80&w=2940&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1522748906645-95d8ad838382?auto=format&fit=crop&w=800&q=80",
     desc: "Lush, romantic floral installations that transform spaces into ethereal gardens."
   },
   {
     title: "Intimate Soirées",
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2938&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80",
     desc: "Delicate, sophisticated gatherings designed for your closest loved ones."
   },
 ];
@@ -37,8 +37,8 @@ const services = [
 export function ServicesCarousel() {
   return (
     <section className="py-24 md:py-32 bg-primary relative overflow-hidden">
-      {/* Subtle watercolor overlay */}
-      <div className="absolute inset-0 bg-white/10 opacity-50 mix-blend-overlay pointer-events-none" />
+      {/* Subtle overlay without expensive mix-blend */}
+      <div className="absolute inset-0 bg-white/10 pointer-events-none" />
 
       <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-[90rem] relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 text-center md:text-left">

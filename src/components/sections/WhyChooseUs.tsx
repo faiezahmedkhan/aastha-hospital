@@ -37,7 +37,7 @@ export function WhyChooseUs() {
               <div className="relative w-full h-full z-10 p-2 bg-white shadow-md">
                 <div className="relative w-full h-full overflow-hidden">
                   <Image
-                    src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2938&auto=format&fit=crop"
+                    src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=80"
                     alt="Elegant details"
                     fill
                     className="object-cover"

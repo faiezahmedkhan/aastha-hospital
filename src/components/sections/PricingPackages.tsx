@@ -41,8 +41,8 @@ const packages = [
 export function PricingPackages() {
   return (
     <section className="py-24 md:py-32 bg-background relative overflow-hidden">
-      {/* Decorative Floral/Watercolor background blur */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 blur-[150px] rounded-full pointer-events-none" />
+      {/* Lightweight background gradient instead of expensive blur */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(139,163,130,0.05) 0%, rgba(139,163,130,0) 70%)' }} />
 
       <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-[90rem] relative z-10">
         <div className="text-center mb-16 max-w-3xl mx-auto">
